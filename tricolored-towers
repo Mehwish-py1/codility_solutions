@@ -1,0 +1,19 @@
+from collections import defaultdict
+
+def solution(T):
+    count = defaultdict(int)
+
+    for tower in T:
+        # All valid variations: original, swap 1st and 2nd, swap 2nd and 3rd
+        variations = [
+            tower,
+            tower[1] + tower[0] + tower[2],
+            tower[0] + tower[2] + tower[1]
+        ]
+
+        # Count each unique variation only once per tower
+        for variant in set(variations):
+            count[variant] += 1
+
+    # Return the maximum number of towers that can look the same
+    return max(count.values())
