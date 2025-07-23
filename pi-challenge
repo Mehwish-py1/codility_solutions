@@ -1,0 +1,12 @@
+from itertools import product
+
+def solution(P, Q):
+    N = len(P)
+    min_distinct = N
+
+    for picks in product([0, 1], repeat=N):
+        S = ''.join(P[i] if picks[i] == 0 else Q[i] for i in range(N))
+        num_distinct = len(set(S))
+        min_distinct = min(num_distinct, min_distinct)
+
+    return min_distinct
