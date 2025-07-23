@@ -1,0 +1,13 @@
+def solution(A, B):
+    N = len(A)
+
+    for r in range(N):
+        valid = True
+        for i in range(N):
+            rotated_index = (i - r) % N
+            if A[i] == B[rotated_index]:
+                valid = False
+                break
+        if valid:
+            return r
+    return -1
